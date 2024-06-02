@@ -1,0 +1,65 @@
+.menu-left {
+    position: fixed; /* Fixed position to keep it in place */
+    top: 40px; /* Position from the top */
+    left: -200px; /* Position from the right */
+    width: 125px; /* Width of the menu */
+    height: calc(100% - 40px); /* Full height of the viewport */
+    background-color: #ffffff; /* Background color */
+    padding: px; /* Padding for content */
+    transition: left 0.3s ease;
+    z-index: 999; /* Set z-index to a high value */
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1); /* Adjust values as needed */
+}
+
+.menu.show-menu {
+    left: 0;
+}
+
+/* Styling for menu items */
+.menu-item {
+    display: flex;
+    font-family: 'Roboto', arial, sans-serif;
+    margin-bottom: 10px; /* Spacing between menu items */
+    align-items: center;
+    /* Style as buttons */
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative; /* Needed for pseudo-element */
+    overflow: hidden; /* Hide overflow of the pseudo-element */
+    z-index: 1; /* Ensure menu items are above pseudo-element */
+}
+
+.menu-item img {
+    width: 25px; /* Adjust image width as needed */
+    height: 25px; /* Adjust image height as needed */
+    margin-right: 10px; /* Spacing between image and text */
+}
+
+.menu-item span {
+    font-family: 'Roboto', arial, sans-serif;
+    /*vertical-align: middle; /* Align text vertically in the middle */
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+}
+
+
+.menu-item:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+
+.menu-item.active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: #ffe066; /* Light yellow background */
+    border-radius: 50%; /* Half-sphere effect */
+    z-index: -1; /* Place behind menu items */
+}

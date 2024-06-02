@@ -1,0 +1,54 @@
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: calc(10.33% - 25px); /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    position: relative; /* Add relative positioning to contain absolute positioned elements */
+}
+
+.save-note-btn {
+    display: none;
+}
+
+.show-btn {
+    display: block;
+}
+
+.note-content {
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* padding: 10px; */
+    text-align: top;
+    font-size: 15px;
+    box-sizing: border-box; /* Ensure padding doesn't increase width */
+}
+
+.note-content input[type="text"]{
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.note-header {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* padding: 10px; */
+    font-size: 16px;
+    box-sizing: border-box;
+    position: absolute;
+    top: -22px; 
+    /* Adjust as needed to position above the content input */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hidden {
+    display: none;
+}

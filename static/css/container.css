@@ -1,0 +1,34 @@
+
+.main-content {
+    padding: 70px;
+    display: flex;
+    flex-direction: column; /* Ensure flex direction is row */
+    justify-content: flex-start; /* Align items to the start of the flex container */
+    align-items: flex-start;
+    transition: margin-left 0.3s ease;
+    /* Other styles for the main content */
+}
+
+.notes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.note-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 1600px) {
+    .notes {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .notes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

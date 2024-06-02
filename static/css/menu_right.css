@@ -1,0 +1,66 @@
+.menu-right {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    position: fixed;
+    top: 42px;
+    right: 10px;
+    width: 125px;
+    height: auto; /* Allow height to adjust dynamically */
+}
+
+.menu-right-item {
+    display: flex;
+    background-color: #f9f9f9;
+    height: 40px;
+    min-width: 160px;
+    
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+}
+
+/* .menu-right-item img {
+    width: 25px; /* Adjust image width as needed */
+    /* height: 25px; /* Adjust image height as needed */
+    /* margin-right: 10px; /* Spacing between image and text */
+/*}*/
+
+/*text styling*/
+
+.menu-right-item span {
+    font-family: 'Roboto', arial, sans-serif;
+    flex: 1;
+    text-align: center;
+}
+
+.menu-right-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.menu-right-item-btn {
+    background-color: transparent;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    width: 160px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2; /* Ensure the button is above the text */
+}
+
+.menu-right.show {
+    height: auto; /* Allow height to adjust dynamically when shown */
+}

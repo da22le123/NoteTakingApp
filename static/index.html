@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyNotes</title> 
+    <link rel="stylesheet" href="./css/menu_left.css">
+    <link rel="stylesheet" href="./css/menu_right.css">
+    <link rel="stylesheet" href="./css/top_bar.css">
+    <link rel="stylesheet" href="./css/container.css">
+    <link rel="stylesheet" href="./css/input_container.css">
+    <link rel="stylesheet" href="./css/note.css">
+</head>
+
+<body>
+    <div class="top-bar">
+        <button id="toggle-menu-btn"></button>
+        <button id="user-select-btn"></button>
+        <label id="current-user-label"></label>
+        <script src="./js/fetch_current_user.js"></script>
+    </div>
+
+     
+    <div class="container">
+        <!-- Menu div -->
+        <div class="menu-left" id="menu-left">
+            <!-- Menu options -->
+            <div class="menu-item">
+                <img src="./resources/light-bulb.png">
+                <span>Notes</span>
+            </div>
+            <div class="menu-item">
+                <img src="./resources/delete.png">
+                <span>Trash</span>
+            </div>
+        </div>
+        <!-- menu-right-item s are being added dynamically when the menu-right is shown (it's shown when user-select-btn is clicked) -->
+        <div class="menu-right" id="menu-right">
+        </div>
+
+        
+        <!-- Content area -->
+        <div class="main-content" id="main-content"> <!-- Adjust margin-right to match the width of the menu plus any additional spacing -->
+            <!-- Your page content goes here -->
+            <div class="input-container">
+                <textarea class="note-content" id="note-content" placeholder="Enter note..."></textarea>
+                <input type="text" class="note-header hidden" placeholder="Enter header">
+                <button class="save-note-btn">Create</button> 
+            </div>
+            <div class="notes" id="notes">
+
+            </div>
+        </div>
+    </div>    
+
+    <script src="./js/toggle_button.js"> </script>
+    <script src="./js/fetch_test.js"> </script>
+    <script src="./js/note.js"> </script>
+    <script src="./js/drop_down_menu.js"></script>
+</body>

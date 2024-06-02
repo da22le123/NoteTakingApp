@@ -1,0 +1,27 @@
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+}
+
+.note-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    margin: 16px;
+    padding: 16px;
+}
+
+.note-header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-header1 .pin {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.note-content1 {
+    margin: 16px 0;
+}
