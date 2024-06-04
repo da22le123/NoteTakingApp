@@ -25,3 +25,19 @@ body {
 .note-content1 {
     margin: 16px 0;
 }
+
+.note-footer1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.delete-btn .img{
+    width: 20px;
+    height: 20px;
+}

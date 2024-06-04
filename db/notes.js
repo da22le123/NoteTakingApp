@@ -12,9 +12,13 @@ function getNoteById(id) {
     return knex("notes").where("id", id).select("*");
 }
 
-function getNoteByUserId(userId) {
-    return knex("notes").where("created_by_user_id", userId).select("*");
+function getNoteByUserId(userId, in_trash) {
+    return knex("notes")
+    .where("created_by_user_id", userId)
+    .where("in_trash", in_trash)
+    .select("*");
 }
+
 
 function deleteNote(id) {
     return knex("notes").where("id", id).del();

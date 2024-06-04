@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded", () => loadNotesUponUpdate(1));

@@ -70,7 +70,7 @@ app.post("/current-user", (req, res) => {
 app.get("/notes/:created_by_user_id", async (req, res) => {
     console.log("/notes/:created_by_user_id accessed");
     try {
-        const notes = await dbNotes.getNoteByUserId(req.params.created_by_user_id);
+        const notes = await dbNotes.getNoteByUserId(req.params.created_by_user_id, req.query.in_trash);
         if (notes) {
             res.status(200).json(notes);
         } else {
@@ -91,6 +91,17 @@ app.post("/notes", async (req, res) => {
 app.delete("/notes/:id", async (req, res) => {
     await dbNotes.deleteNote(req.params.id);
     res.status(200).json({success: true});
+});
+
+//todo test the endpoint!!!!
+
+app.patch("/notes/:id", async (req, res) => {
+    try {
+        const id = await dbNotes.updateNote(req.params.id, req.body);
+        res.status(200).json({ id });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update note' });
+    }
 });
 
 app.get("/", (req, res) => {

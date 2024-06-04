@@ -1,6 +1,8 @@
 const menu = document.getElementById('menu-left');
 const mainContent = document.getElementById('main-content');
 const toggleMenuBtn = document.getElementById('toggle-menu-btn');
+const notesBtn = document.getElementById('notes-btn');
+const trashBtn = document.getElementById('trash-btn');
 
 toggleMenuBtn.addEventListener('click', () => {
     // Toggle class to show/hide menu
@@ -15,6 +17,15 @@ toggleMenuBtn.addEventListener('click', () => {
         menu.style.left = '-125px'; // Adjust to hide menu
         mainContent.style.marginLeft = 'auto'; // Center the main content
     }
+});
+
+console.log(trashBtn)
+trashBtn.addEventListener('click', () => {
+    window.location.href = '../trash.html';
+});
+
+notesBtn.addEventListener('click', () => {
+    window.location.href = '../index.html';
 });
 
 function calculateMargin(element) {

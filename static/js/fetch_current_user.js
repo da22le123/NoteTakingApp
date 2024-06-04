@@ -6,17 +6,17 @@ async function fetchUserName() {
     currentUserLabel.textContent = user.name;
 }
 
-async function loadNotesUponUpdate() {
+async function loadNotesUponUpdate(in_trash) {
     console.log("loadNotesUponUpdate called");
 
     clearAllNotes();
 
     const user = await getCurrentUser();
 
-    const notes = await getNotesByUserId(user.id);
+    const notes = await getNotesByUserId(user.id, in_trash);
 
     notes.forEach(note => {
-        addNote(note.id, note.header, note.content);
+        addNote(note.id, note.header, note.content, in_trash);
     });
 }
 
@@ -25,10 +25,10 @@ function clearAllNotes() {
     notesContainer.innerHTML = ''; // Clear all child elements
 }
 
-async function getNotesByUserId(created_by_user_id) {
+async function getNotesByUserId(created_by_user_id, in_trash) {
     console.log("getNotesByUserId called");
     try {
-        const response = await fetch(`/notes/${created_by_user_id}`, {
+        const response = await fetch(`/notes/${created_by_user_id}?in_trash=${in_trash}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,4 +54,3 @@ async function getNotesByUserId(created_by_user_id) {
 
 
 document.addEventListener("DOMContentLoaded", fetchUserName);
-document.addEventListener("DOMContentLoaded", loadNotesUponUpdate);
