@@ -12,7 +12,7 @@ function getNoteById(id) {
     return knex("notes").where("id", id).select("*");
 }
 
-function getNoteByUserId(userId, in_trash) {
+function getNotesByUserId(userId, in_trash) {
     return knex("notes")
     .where("created_by_user_id", userId)
     .where("in_trash", in_trash)
@@ -34,5 +34,5 @@ module.exports = {
     deleteNote,
     updateNote,
     getNoteById,
-    getNoteByUserId
+    getNotesByUserId
 };

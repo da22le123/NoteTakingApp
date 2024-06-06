@@ -46,7 +46,7 @@ async function populateMenu() {
 
         button.addEventListener('click', async () => {
             setCurrentUser(user);
-            await loadNotesUponUpdate();
+            location.reload();
         });
 
         const span = document.createElement('span');

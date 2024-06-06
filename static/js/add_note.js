@@ -1,4 +1,4 @@
-
+let noteConteinerHidden = false;
 
 function addNote(noteId, header, content, in_trash) {
     var noteClass = document.getElementById('notes');
@@ -56,10 +56,33 @@ function addNote(noteId, header, content, in_trash) {
         noteContainer.remove(); // Remove the entire note container
         if (in_trash === 0) {
             moveNoteToTrash(noteId);
-        } else if(in_trash === 1){
+        } else if (in_trash === 1) {
             deleteNote(noteId);
         }
     };
+
+    //when clicked on the main area of the note
+
+    newNoteHeader.addEventListener('click', () => {
+        if (!noteConteinerHidden) {
+            noteContainer.classList.add('hidden');
+            //fetching the note by id stored in the note container dataset
+            //and then desplaying its contents with editing ability
+            displayEditingWindow(getNoteById(noteContainer.dataset.noteId));
+            noteConteinerHidden = true;
+        }
+    })
+
+    newNoteContent.addEventListener('click', () => {
+        if (!noteConteinerHidden) {
+            noteContainer.classList.add('hidden');
+            //fetching the note by id stored in the note container dataset
+            //and then desplaying its contents with editing ability
+            displayEditingWindow(getNoteById(noteContainer.dataset.noteId));
+            noteConteinerHidden = true;
+        }
+    })
+
     noteFooter.appendChild(deleteButton);
 
     // Append note header, content, and footer to note container
@@ -82,3 +105,16 @@ function truncateText(text, maxLength) {
     }
     return text;
 }
+
+async function getNoteById(id) {
+    const res = await fetch(`/notes/id/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const note = await res.json();
+    return note;
+}
+

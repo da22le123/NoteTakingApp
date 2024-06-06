@@ -88,4 +88,7 @@ async function postNewNote(content, header) {
     return res;
 }
 
-document.addEventListener("DOMContentLoaded", () => loadNotesUponUpdate(0));
+document.addEventListener("DOMContentLoaded", () => { 
+    loadNotesUponUpdate(0)
+    console.log("Called loadNotesUponUpdate(0)")
+});

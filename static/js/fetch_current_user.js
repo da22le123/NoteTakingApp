@@ -7,8 +7,6 @@ async function fetchUserName() {
 }
 
 async function loadNotesUponUpdate(in_trash) {
-    console.log("loadNotesUponUpdate called");
-
     clearAllNotes();
 
     const user = await getCurrentUser();

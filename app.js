@@ -67,10 +67,23 @@ app.post("/current-user", (req, res) => {
     res.status(200).json({success: true});
 });
 
-app.get("/notes/:created_by_user_id", async (req, res) => {
-    console.log("/notes/:created_by_user_id accessed");
+app.get("/notes/id/:id", async(req, res) => {
     try {
-        const notes = await dbNotes.getNoteByUserId(req.params.created_by_user_id, req.query.in_trash);
+        const note = await dbNotes.getNoteById(req.params.id);
+        if (note) {
+            res.status(200).json(note);
+        } else {
+            res.status(404).json({ error: 'Note not found' });
+        }
+    } catch (error) {
+        console.error('Error fetching note:', error);
+        res.status(500).json({ error: 'Failed to fetch note'});
+    }
+});
+
+app.get("/notes/:created_by_user_id", async (req, res) => {
+    try {
+        const notes = await dbNotes.getNotesByUserId(req.params.created_by_user_id, req.query.in_trash);
         if (notes) {
             res.status(200).json(notes);
         } else {
@@ -92,8 +105,6 @@ app.delete("/notes/:id", async (req, res) => {
     await dbNotes.deleteNote(req.params.id);
     res.status(200).json({success: true});
 });
-
-//todo test the endpoint!!!!
 
 app.patch("/notes/:id", async (req, res) => {
     try {
