@@ -16,7 +16,7 @@ userSelectBtn.addEventListener('click', function() {
 
 async function populateMenu() {
     let numberOfUsers = 0;
-    const res = await fetch('/users', {
+    const res = await fetch(`${serverUrl}/users`, {
         method: 'GET'
     });
 
@@ -112,7 +112,7 @@ function clearMenu() {
 async function setCurrentUser(user) {
     currentUser = user;
     currentUserLabel.innerText = user.name;
-    await fetch('/current-user', {
+    await fetch(`${serverUrl}/current-user`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ async function setCurrentUser(user) {
 
 
 async function getCurrentUser() {
-    const res= await fetch('/current-user', {
+    const res= await fetch(`${serverUrl}/current-user`, {
         method: 'GET'
     });
 

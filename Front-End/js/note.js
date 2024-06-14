@@ -1,3 +1,5 @@
+const serverUrl = "http://localhost:3000";
+
 document.addEventListener('DOMContentLoaded', function () {
     const noteContent = document.getElementById('note-content');
     const noteHeader = document.querySelector('.note-header');
@@ -72,7 +74,7 @@ async function postNewNote(content, header) {
         "in_trash": 0
     }
 
-    const res = await fetch('/notes', {
+    const res = await fetch(`${serverUrl}/notes`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

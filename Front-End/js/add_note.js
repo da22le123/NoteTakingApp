@@ -1,9 +1,9 @@
+
 let noteConteinerHidden = false;
+let hiddenNote = null;
 
 function addNote(noteId, header, content, in_trash) {
     var noteClass = document.getElementById('notes');
-    var noteContent = document.getElementById('note-content');
-    var noteHeader = document.querySelector('.note-header');
 
 
     var noteContainer = document.createElement('div');
@@ -38,7 +38,7 @@ function addNote(noteId, header, content, in_trash) {
     img.className = 'img';
 
     // Step 3: Set the source of the image
-    img.src = '../resources/icons8-delete-192.png'; // Replace with the actual path to your image
+    img.src = './resources/icons8-delete-192.png'; // Replace with the actual path to your image
     img.alt = 'Delete'; // Alt text for the image
 
     // Step 4: Create the text node
@@ -61,11 +61,11 @@ function addNote(noteId, header, content, in_trash) {
         }
     };
 
-    //when clicked on the main area of the note
-
+    //when clicked on the header of the note
     newNoteHeader.addEventListener('click', () => {
         if (!noteConteinerHidden) {
             noteContainer.classList.add('hidden');
+            hiddenNote = noteContainer;
             //fetching the note by id stored in the note container dataset
             //and then desplaying its contents with editing ability
             displayEditingWindow(getNoteById(noteContainer.dataset.noteId));
@@ -73,13 +73,27 @@ function addNote(noteId, header, content, in_trash) {
         }
     })
 
+    //when clicked on the content of the note
     newNoteContent.addEventListener('click', () => {
         if (!noteConteinerHidden) {
             noteContainer.classList.add('hidden');
+            hiddenNote = noteContainer;
             //fetching the note by id stored in the note container dataset
             //and then desplaying its contents with editing ability
             displayEditingWindow(getNoteById(noteContainer.dataset.noteId));
             noteConteinerHidden = true;
+        }
+    })
+
+    document.addEventListener('click', (e) => {
+        //hideEditingWindow(e);
+        if (noteConteinerHidden) {
+            const noteEditingWindow = document.querySelector('.note-editing-window');
+            if (e.target === noteEditingWindow || e.target === noteEditingWindow.noteEditingWindowShow) {
+                noteEditingWindow.classList.remove('show');
+                hiddenNote.classList.remove('hidden');
+                noteConteinerHidden = false;
+            }
         }
     })
 
@@ -107,7 +121,7 @@ function truncateText(text, maxLength) {
 }
 
 async function getNoteById(id) {
-    const res = await fetch(`/notes/id/${id}`, {
+    const res = await fetch(`${serverUrl}/notes/id/${id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

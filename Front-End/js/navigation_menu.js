@@ -21,11 +21,11 @@ toggleMenuBtn.addEventListener('click', () => {
 
 console.log(trashBtn)
 trashBtn.addEventListener('click', () => {
-    window.location.href = '../trash.html';
+    window.location.href = './trash.html';
 });
 
 notesBtn.addEventListener('click', () => {
-    window.location.href = '../index.html';
+    window.location.href = './index.html';
 });
 
 function calculateMargin(element) {

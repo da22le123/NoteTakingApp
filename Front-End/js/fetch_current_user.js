@@ -26,7 +26,7 @@ function clearAllNotes() {
 async function getNotesByUserId(created_by_user_id, in_trash) {
     console.log("getNotesByUserId called");
     try {
-        const response = await fetch(`/notes/${created_by_user_id}?in_trash=${in_trash}`, {
+        const response = await fetch(`${serverUrl}/notes/${created_by_user_id}?in_trash=${in_trash}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

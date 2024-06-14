@@ -1,4 +1,5 @@
 // Requiring the http module
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -11,6 +12,7 @@ const port = 3000;
 
 let currentUser = null;
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
