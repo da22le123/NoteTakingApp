@@ -1,8 +1,8 @@
 {
   "name": "package",
   "version": "1.0.0",
-  "description": "first package",
-  "main": "index.js",
+  "description": "backend for the WebSite",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "restart": "node --watch app.js",

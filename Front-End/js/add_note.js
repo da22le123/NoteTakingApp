@@ -1,6 +1,7 @@
 
-let noteConteinerHidden = false;
+let noteContainerHidden = false;
 let hiddenNote = null;
+let hiddenNoteId = null;
 
 function addNote(noteId, header, content, in_trash) {
     var noteClass = document.getElementById('notes');
@@ -62,40 +63,54 @@ function addNote(noteId, header, content, in_trash) {
     };
 
     //when clicked on the header of the note
-    newNoteHeader.addEventListener('click', () => {
-        if (!noteConteinerHidden) {
+    newNoteHeader.addEventListener('click', async () => {
+        if (!noteContainerHidden) {
             noteContainer.classList.add('hidden');
             hiddenNote = noteContainer;
+            hiddenNoteId = noteContainer.dataset.noteId;
             //fetching the note by id stored in the note container dataset
             //and then desplaying its contents with editing ability
-            displayEditingWindow(getNoteById(noteContainer.dataset.noteId));
-            noteConteinerHidden = true;
+            const note = await getNoteById(noteContainer.dataset.noteId);
+            displayEditingWindow(note[0]);
+            noteContainerHidden = true;
         }
     })
 
     //when clicked on the content of the note
-    newNoteContent.addEventListener('click', () => {
-        if (!noteConteinerHidden) {
+    newNoteContent.addEventListener('click', async () =>{
+        if (!noteContainerHidden) {
             noteContainer.classList.add('hidden');
             hiddenNote = noteContainer;
+            hiddenNoteId = noteContainer.dataset.noteId;
             //fetching the note by id stored in the note container dataset
             //and then desplaying its contents with editing ability
-            displayEditingWindow(getNoteById(noteContainer.dataset.noteId));
-            noteConteinerHidden = true;
+            const note = await getNoteById(noteContainer.dataset.noteId);
+            displayEditingWindow(note[0]);
+            noteContainerHidden = true;
         }
     })
 
+
+    
+
+
+    //when clicked outside of the popup, closes it
     document.addEventListener('click', (e) => {
-        //hideEditingWindow(e);
-        if (noteConteinerHidden) {
-            const noteEditingWindow = document.querySelector('.note-editing-window');
-            if (e.target === noteEditingWindow || e.target === noteEditingWindow.noteEditingWindowShow) {
-                noteEditingWindow.classList.remove('show');
-                hiddenNote.classList.remove('hidden');
-                noteConteinerHidden = false;
-            }
+        const noteEditingWindow = document.getElementById('note-editing-window');
+        if (noteContainerHidden && e.target === noteEditingWindow ) {
+            noteEditingWindow.classList.remove('show');
+            hiddenNote.classList.remove('hidden');
+            //fetch the note then update it
+            getNoteById(hiddenNoteId)
+                .then(note => {
+                    updateNotesContent(note[0]);
+                });
+            noteContainerHidden = false;
+            //refresh page
+            loadNotesUponUpdate(0)
         }
-    })
+    });
+    
 
     noteFooter.appendChild(deleteButton);
 

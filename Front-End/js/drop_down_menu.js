@@ -10,7 +10,6 @@ userSelectBtn.addEventListener('click', function() {
         clearMenu();
     }
     toggled = !toggled;
-    console.log(toggled);
 });
 
 
@@ -75,7 +74,7 @@ async function populateMenu() {
     button.style.width = '160px'; // Ensure width is set consistently
 
     button.addEventListener('click', () => 
-        window.location.href = '../settings.html'
+        window.location.href = './settings.html'
     );
 
     const span = document.createElement('span');
@@ -85,7 +84,7 @@ async function populateMenu() {
     span.style.right = "50px";
 
     const img = document.createElement('img');
-    img.src = '../resources/setting.png';
+    img.src = './resources/setting.png';
     img.style.position = "absolute";
     img.style.right = "10px";
     img.style.width = "30px";
