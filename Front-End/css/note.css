@@ -41,3 +41,13 @@ body {
     width: 20px;
     height: 20px;
 }
+
+.get-back-from-trash-button {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.get-back-from-trash-button.show {
+    display: block;
+}

@@ -61,10 +61,11 @@ function updateNotesContent(note) {
     }
 
     updateNote(updatedNote);
+    location.reload();
 }
 
 async function updateNote(note) {
-    await fetch(`${serverUrl}/notes/${note.id}`, {
+    await fetch(`${serverUrl1}/notes/${note.id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',

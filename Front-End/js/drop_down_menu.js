@@ -1,6 +1,7 @@
 const userSelectBtn = document.getElementById("user-select-btn");
 const menuRight = document.getElementById('menu-right');
 const currentUserLabel = document.getElementById('current-user-label');
+const serverUrl1 = 'http://localhost:3000'
 let toggled = false;
 
 userSelectBtn.addEventListener('click', function() {
@@ -15,7 +16,7 @@ userSelectBtn.addEventListener('click', function() {
 
 async function populateMenu() {
     let numberOfUsers = 0;
-    const res = await fetch(`${serverUrl}/users`, {
+    const res = await fetch(`${serverUrl1}/users`, {
         method: 'GET'
     });
 
@@ -124,7 +125,7 @@ async function setCurrentUser(user) {
 
 
 async function getCurrentUser() {
-    const res= await fetch(`${serverUrl}/current-user`, {
+    const res= await fetch(`${serverUrl1}/current-user`, {
         method: 'GET'
     });
 

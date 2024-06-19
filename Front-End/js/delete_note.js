@@ -1,7 +1,7 @@
 //todo test the function!!!
 
 async function moveNoteToTrash(id) {
-    const response = await fetch(`${serverUrl}/notes/${id}`, {
+    const response = await fetch(`${serverUrl1}/notes/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ async function moveNoteToTrash(id) {
 }
 
 async function deleteNote(id) {
-    const response = await fetch(`${serverUrl}/notes/${id}`, {
+    const response = await fetch(`${serverUrl1}/notes/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

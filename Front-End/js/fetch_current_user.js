@@ -1,8 +1,10 @@
 //This is used to display the name of the current user on the top bar whenever the page is reloaded
 // Fetch the user's name from the backend
+const serverUrl2 = 'http://localhost:3000';
+
 async function fetchUserName() {
     const currentUserLabel = document.getElementById('current-user-label');
-    const user = await getCurrentUser()
+    const user = await getCurrentUser();
     currentUserLabel.textContent = user.name;
 }
 
@@ -26,7 +28,7 @@ function clearAllNotes() {
 async function getNotesByUserId(created_by_user_id, in_trash) {
     console.log("getNotesByUserId called");
     try {
-        const response = await fetch(`${serverUrl}/notes/${created_by_user_id}?in_trash=${in_trash}`, {
+        const response = await fetch(`${serverUrl2}/notes/${created_by_user_id}?in_trash=${in_trash}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

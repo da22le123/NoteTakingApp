@@ -2,6 +2,7 @@
 let noteContainerHidden = false;
 let hiddenNote = null;
 let hiddenNoteId = null;
+const serverUrl3 = 'http://localhost:3000';
 
 function addNote(noteId, header, content, in_trash) {
     var noteClass = document.getElementById('notes');
@@ -17,11 +18,10 @@ function addNote(noteId, header, content, in_trash) {
     newNoteHeader.className = 'note-header1';
     var headerText = document.createElement('div');
     headerText.textContent = header;
-    var pinIcon = document.createElement('span');
-    pinIcon.className = 'pin';
-    pinIcon.textContent = '📌';
     newNoteHeader.appendChild(headerText);
-    newNoteHeader.appendChild(pinIcon);
+    
+
+
 
     // Create note content
     var newNoteContent = document.createElement('div');
@@ -31,6 +31,29 @@ function addNote(noteId, header, content, in_trash) {
     // Create note footer
     var noteFooter = document.createElement('div');
     noteFooter.className = 'note-footer1';
+
+    var getBackFromTrashButton = document.createElement('span');
+    getBackFromTrashButton.className = 'get-back-from-trash-button';
+    getBackFromTrashButton.textContent = '🔙';
+
+    //show the button if the note is in trash
+    if (in_trash == 1) {
+        getBackFromTrashButton.classList.add('show');
+    }
+
+
+    //getting the note back to the main list, when clicking on the button
+    getBackFromTrashButton.addEventListener('click', () => {
+        const changedField = {
+            "id": noteId,
+            "in_trash": 0
+        }
+        updateNote(changedField)
+        .then(() => {console.log("changed the in_trash to 0")});
+        location.reload();
+    });
+
+    noteFooter.appendChild(getBackFromTrashButton);
 
     // Add buttons to note footer
     var deleteButton = document.createElement('button');
@@ -136,7 +159,7 @@ function truncateText(text, maxLength) {
 }
 
 async function getNoteById(id) {
-    const res = await fetch(`${serverUrl}/notes/id/${id}`, {
+    const res = await fetch(`${serverUrl3}/notes/id/${id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
