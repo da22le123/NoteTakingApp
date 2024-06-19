@@ -2,6 +2,7 @@ const menu = document.getElementById('menu-left');
 const mainContent = document.getElementById('main-content');
 const toggleMenuBtn = document.getElementById('toggle-menu-btn');
 const notesBtn = document.getElementById('notes-btn');
+const remindersBtn = document.getElementById('reminder-btn');
 const trashBtn = document.getElementById('trash-btn');
 
 toggleMenuBtn.addEventListener('click', () => {
@@ -12,16 +13,19 @@ toggleMenuBtn.addEventListener('click', () => {
     // Adjust main content width when menu is toggled
     if (menu.classList.contains('show-menu')) {
         menu.style.left = '0'; // Adjust to show menu
-        mainContent.style.marginLeft = calculateMargin(mainContent) + 125 + "px"; // Adjust to match menu width
+        mainContent.style.marginLeft = calculateMargin(mainContent) + 140 + "px"; // Adjust to match menu width
     } else {
-        menu.style.left = '-125px'; // Adjust to hide menu
+        menu.style.left = '-140px'; // Adjust to hide menu
         mainContent.style.marginLeft = 'auto'; // Center the main content
     }
 });
 
-console.log(trashBtn)
 trashBtn.addEventListener('click', () => {
     window.location.href = './trash.html';
+});
+
+remindersBtn.addEventListener('click', () => {
+    window.location.href = './reminders.html';
 });
 
 notesBtn.addEventListener('click', () => {

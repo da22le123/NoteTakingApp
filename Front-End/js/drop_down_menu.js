@@ -74,29 +74,6 @@ async function populateMenu() {
     button.style.height = '40px'; // Ensure height is set consistently
     button.style.width = '160px'; // Ensure width is set consistently
 
-    button.addEventListener('click', () => 
-        window.location.href = './settings.html'
-    );
-
-    const span = document.createElement('span');
-    span.textContent = 'Settings';
-    span.style.padding = "0px";
-    span.style.position = "absolute";
-    span.style.right = "50px";
-
-    const img = document.createElement('img');
-    img.src = './resources/setting.png';
-    img.style.position = "absolute";
-    img.style.right = "10px";
-    img.style.width = "30px";
-    img.style.height = "30px";
-
-    menuItem.appendChild(span);
-    menuItem.appendChild(button);
-    menuItem.appendChild(img);
-    menuRight.appendChild(menuItem);
-
-
     menuRight.style.height = `${numberOfUsers * 40 + 40}px`;
     menuRight.classList.add('show');
 }

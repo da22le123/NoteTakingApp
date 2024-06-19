@@ -2,7 +2,7 @@
     position: fixed; /* Fixed position to keep it in place */
     top: 40px; /* Position from the top */
     left: -200px; /* Position from the right */
-    width: 125px; /* Width of the menu */
+    width: 140px; /* Width of the menu */
     height: calc(100% - 40px); /* Full height of the viewport */
     background-color: #ffffff; /* Background color */
     padding: px; /* Padding for content */
