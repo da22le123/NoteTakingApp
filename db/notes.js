@@ -1,10 +1,11 @@
 const knex = require("./knex.js");
 
+
 function createNote(note) {
-    return knex("notes").insert(note);
+    return knex("notes").insert(note).returning('id');
 }
 
-function getAllNotes(note) {
+function getAllNotes() {
     return knex("notes").select("*");
 }
 
@@ -18,7 +19,6 @@ function getNotesByUserId(userId, in_trash) {
     .where("in_trash", in_trash)
     .select("*");
 }
-
 
 function deleteNote(id) {
     return knex("notes").where("id", id).del();

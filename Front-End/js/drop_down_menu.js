@@ -47,6 +47,7 @@ async function populateMenu() {
         button.addEventListener('click', async () => {
             setCurrentUser(user);
             location.reload();
+            console.log('Selected user: ' + user.name);
         });
 
         const span = document.createElement('span');
@@ -89,14 +90,13 @@ function clearMenu() {
 async function setCurrentUser(user) {
     currentUser = user;
     currentUserLabel.innerText = user.name;
-    await fetch(`${serverUrl}/current-user`, {
+    await fetch(`${serverUrl1}/current-user`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(user),
     });
-    console.log('Selected user:', currentUser);
 }
 
 

@@ -91,6 +91,6 @@ async function postNewNote(content, header) {
 }
 
 document.addEventListener("DOMContentLoaded", () => { 
-    loadNotesUponUpdate(0)
+    loadNotesUponUpdate(0);
     console.log("Called loadNotesUponUpdate(0)")
 });

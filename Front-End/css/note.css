@@ -17,11 +17,6 @@ body {
     align-items: center;
 }
 
-.note-header1 .pin {
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .note-content1 {
     margin: 16px 0;
 }

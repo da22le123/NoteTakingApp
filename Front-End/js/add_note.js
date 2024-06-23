@@ -48,8 +48,7 @@ function addNote(noteId, header, content, in_trash) {
             "id": noteId,
             "in_trash": 0
         }
-        updateNote(changedField)
-        .then(() => {console.log("changed the in_trash to 0")});
+        updateNote(changedField);
         location.reload();
     });
 

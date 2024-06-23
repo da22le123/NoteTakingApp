@@ -2,10 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyNotes</title>
+    <title>MyNotes</title> 
+    <link rel="stylesheet" href="./css/menu_left.css">
+    <link rel="stylesheet" href="./css/menu_right.css">
+    <link rel="stylesheet" href="./css/top_bar.css">
+    <link rel="stylesheet" href="./css/container.css">
+    <link rel="stylesheet" href="./css/input_container.css">
+    <link rel="stylesheet" href="./css/note.css">
+    <link rel="stylesheet" href="./css/note-editing-window.css">
+    <link rel="stylesheet" href="./css/reminder.css">
+
 </head>
+
 <body>
-    
+    <div class="top-bar">
+        <button id="toggle-menu-btn"></button>
+        <button id="user-select-btn"></button>
+        <label id="current-user-label"></label>
+        <script src="./js/fetch_current_user.js"></script>
+    </div>
+
+     
+    <div class="container">
+        <!-- Menu div -->
+        <div class="menu-left" id="menu-left">
+            <!-- Menu options -->
+            <div class="menu-item" id="notes-btn">
+                <img src="./resources/light-bulb.png">
+                <span>Notes</span>
+            </div>
+            <div class="menu-item" id="reminder-btn">
+                <img src="./resources/bell.png">
+                <span>Reminders</span>
+            </div>
+            <div class="menu-item" id="trash-btn">
+                <img src="./resources/delete.png">
+                <span>Trash</span>
+            </div>
+        </div>
+        <!-- menu-right-item s are being added dynamically when the menu-right is shown (it's shown when user-select-btn is clicked) -->
+        <div class="menu-right" id="menu-right">
+        </div>
+
+        
+        <!-- Content area -->
+        <div class="main-content" id="main-content"> <!-- Adjust margin-right to match the width of the menu plus any additional spacing -->
+            <div class="input-container">
+                <textarea class="reminder-content" id="reminder-content" placeholder="Enter reminder..."></textarea>
+                <input type="text" class="reminder-header hidden" placeholder="Enter header">
+                <button class="save-reminder-btn" id="save-reminder-btn">Create</button> 
+                <label for="remind_time">Choose a time to remind at:</label>
+                <input
+                type="datetime-local"
+                id="remind_time"
+                name="remind_time"
+                value="2024-06-12T19:30"
+                min="2024-06-07T00:00"
+                max="2030-06-14T00:00" />
+
+            </div>
+            <div class="reminders" id="reminders">
+
+            </div>
+
+        </div>
+    </div>    
+
+    <script src="./js/navigation_menu.js"> </script>
+    <script src="./js/drop_down_menu.js"></script>
+    <script src="./js/add_reminder.js"></script>
+    <script src="./js/reminder.js"></script>
+    <script src="./js/edit_reminder.js"></script>
+
 </body>
-</html>
